@@ -199,12 +199,12 @@ CompRecord process_dir(char *dirname, Image *img, int out_fd)
 	}
 
 	// Redirect output
-	if (out_fd != 1)
+	if (out_fd != -1)
 	{
-		// printf("[%d]: Found image file %s with distance %f\n", getpid(), CRec.filename, CRec.distance);
 		if (write(out_fd, &CRec, sizeof(CRec)) == -1)
 		{
 			perror("write to pipe");
+			exit(1);
 		}
 	}
 
