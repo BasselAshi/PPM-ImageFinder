@@ -101,6 +101,7 @@ int main(int argc, char **argv)
 
     struct dirent *dp;
     CompRecord CRec;
+    Image *img;
     strcpy(CRec.filename, "");
     CRec.distance = FLT_MAX;
     int fd[2];
@@ -129,7 +130,7 @@ int main(int argc, char **argv)
             exit(1);
         }
 
-        Image *img = read_image(image_file); // Read given image
+        img = read_image(image_file); // Read given image
 
         // Only call process_dir if it is a directory
         // Otherwise ignore it.
@@ -157,6 +158,8 @@ int main(int argc, char **argv)
             { // Child
                 close(fd[0]);
                 process_dir(path, img, fd[1]);
+                free(img->p);
+                free(img);
                 close(fd[1]);
                 return 0;
             }
@@ -177,6 +180,9 @@ int main(int argc, char **argv)
         }
         close(fds[i]);
     }
+
+    free(img->p);
+    free(img);
 
     printf("The most similar image is %s with a distance of %f\n", CRec.filename, CRec.distance);
 
