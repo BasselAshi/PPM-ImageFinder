@@ -101,7 +101,7 @@ int main(int argc, char **argv)
 
     struct dirent *dp;
     CompRecord CRec;
-    Image *img;
+    Image *img = read_image(image_file); // Read given image
     strcpy(CRec.filename, "");
     CRec.distance = FLT_MAX;
     int fd[2];
@@ -129,8 +129,6 @@ int main(int argc, char **argv)
             perror("stat");
             exit(1);
         }
-
-        img = read_image(image_file); // Read given image
 
         // Only call process_dir if it is a directory
         // Otherwise ignore it.
