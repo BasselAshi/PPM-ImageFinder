@@ -129,7 +129,7 @@ float compare_images(Image *img1, char *filename)
 		sumEuc += eucl_distance(img1->p[i], img2->p[i]);
 		i++;
 	}
-	float avgEuc = sumEuc / dim;
+	float avgEuc = sumEuc / (float)dim;
 
 	free(img2->p);
 	free(img2);
