@@ -161,6 +161,7 @@ int main(int argc, char **argv)
             }
             else
             { // Child
+                printf("Processing all images in directory: %s \n", path);
                 close(fd[0]);
                 process_dir(path, img, fd[1]);
                 free(img->p);
