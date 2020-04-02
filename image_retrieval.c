@@ -163,10 +163,9 @@ int main(int argc, char **argv)
             }
         }
     }
-    i--;
 
     CompRecord tempCR;
-    for (int j = 0; j <= i; j++)
+    for (int j = 0; j < i; j++)
     {
         while (read(fds[j], &tempCR, sizeof(tempCR)) > 0)
         {
