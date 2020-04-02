@@ -99,9 +99,16 @@ int main(int argc, char **argv)
     }
     //-----------------------------------------------------------------------------------------
 
+    Image *img = read_image(image_file); // Read given image
+    // Invalid image
+    if (img == NULL)
+    {
+        fprintf(stderr, "Invalid image input!\n");
+        exit(1);
+    }
+
     struct dirent *dp;
     CompRecord CRec;
-    Image *img = read_image(image_file); // Read given image
     strcpy(CRec.filename, "");
     CRec.distance = FLT_MAX;
     int fd[2];

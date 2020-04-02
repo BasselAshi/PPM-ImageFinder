@@ -145,13 +145,6 @@ float compare_images(Image *img1, char *filename)
 */
 CompRecord process_dir(char *dirname, Image *img, int out_fd)
 {
-	// Invalid image
-	if (img == NULL)
-	{
-		fprintf(stderr, "Invalid image input!\n");
-		exit(1);
-	}
-
 	// Open directory
 	DIR *mainDir;
 	if ((mainDir = opendir(dirname)) == NULL)
