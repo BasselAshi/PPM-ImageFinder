@@ -136,7 +136,7 @@ int main(int argc, char **argv)
         {
             if (pipe(fd) == -1)
             { // Error
-                perror("pipe");
+                fprintf(stderr, "Error creating a pipe!\n");
                 exit(1);
             }
             fds[i] = fd[0];
@@ -145,7 +145,7 @@ int main(int argc, char **argv)
             int r = fork();
             if (r < 0)
             { // Error
-                perror("fork");
+                fprintf(stderr, "Error creating a process!\n");
                 exit(1);
             }
             else if (r > 0)
