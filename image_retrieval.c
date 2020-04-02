@@ -166,7 +166,7 @@ int main(int argc, char **argv)
     i--;
 
     CompRecord tempCR;
-    for (int j = i; j >= 0; j--)
+    for (int j = 0; j <= i; j++)
     {
         while (read(fds[j], &tempCR, sizeof(tempCR)) > 0)
         {
@@ -176,7 +176,7 @@ int main(int argc, char **argv)
                 CRec = tempCR;
             }
         }
-        close(fds[i]);
+        close(fds[j]);
     }
 
     free(img->p);
